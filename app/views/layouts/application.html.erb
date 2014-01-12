@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog2</title>
+  <%= stylesheet_link_tag    "/css/bootstrap-theme.css", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "/css/bootstrap-theme.min", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "/css/bootstrap.css", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "/css/bootstrap.min", media: "all", "data-turbolinks-track" => true %>
+
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+
+  <%= javascript_include_tag "/js/bootstrap.js", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "/js/bootstrap.min", "data-turbolinks-track" => true %>
+
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+ <%= link_to 'Home', posts_path %>
+ <% if sign_in? %>
+    <p>Welcome <%= current_user[:name] %></p>
+    <%= link_to 'Sing out', signout_path, method: 'delete' %>
+ <% else %>
+    <%= link_to 'Sing up', users_new_path %>
+    <%= link_to 'Sing in', new_session_path %>
+ <% end %>
+<%= yield %>
+
+</body>
+</html>

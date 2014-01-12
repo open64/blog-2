@@ -1,0 +1,5 @@
+<% if sign_in? %>
+    <p><%= @user.name %>, <%= @user.email %></p>
+<% else %>
+    <p>You not sign in!</p>
+<% end %>

@@ -1,0 +1,10 @@
+<% if @post.author?(current_user) %>
+    <h1>Editing post</h1>
+
+    <%= render 'form' %>
+
+    <%= link_to 'Show', @post %> |
+    <%= link_to 'Back', posts_path %>
+<% else %>
+    <p>You are not author of this post</p>
+<% end %>
