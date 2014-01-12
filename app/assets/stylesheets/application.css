@@ -14,3 +14,12 @@
 html body {
     margin-left: 22px;
 }
+#welcome {
+    color: rgb(248, 8, 8);
+    float: right;
+    margin-top: 15px;
+}
+
+#content {
+    margin-top: 55px;
+}

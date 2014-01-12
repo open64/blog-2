@@ -1,5 +1,6 @@
 <% if sign_in? %>
-    <p><%= @user.name %>, <%= @user.email %></p>
+    <p>Welcome to your own page, <%= @user.name %></p>
+    <p>Your email <%= @user.email %></p>
 <% else %>
     <p>You not sign in!</p>
 <% end %>

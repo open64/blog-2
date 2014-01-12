@@ -1,7 +1,8 @@
 Blog2::Application.routes.draw do
   get "users/new"
   resources :posts
-  resources :users
+  resources :users do
+  end
   resources :sessions, only: [:new, :destroy, :create]
   controller :sessions do
     match '/signup', to: 'users#new', via: 'get'
