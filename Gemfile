@@ -15,6 +15,8 @@ gem 'rake', '~> 10.1.1'
 
 gem 'bcrypt-ruby'
 
+gem 'russian'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
