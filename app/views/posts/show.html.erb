@@ -12,7 +12,7 @@
 
 <p>
   <strong>Author:</strong>
-  <%= User.find(@post.author_id).name%>
+  <%= User.find(@post.author_id.to_i).name%>
 </p>
 
 <% if @post.author?(current_user) %>
@@ -28,7 +28,7 @@
       <%= comment.created_at %>
     </div>
     <div>
-      <%= User.find(comment.author_id).name %>
+      <%= User.find(comment.author_id.to_i).name %>
     </div>
     <div class="content">
       <%= comment.content %>
