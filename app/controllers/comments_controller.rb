@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_filter :find_comment, only: [:edit, :destroy, :update]
   def new
   end
 
@@ -6,30 +7,29 @@ class CommentsController < ApplicationController
     @comment = Comment.new(content: params[:comment][:content], post_id: params[:id],
                            author_id: Post.find(params[:id])[:author_id])
     @comment.save
-
-    redirect_to post_path(params[:id])
+    redirect_to_post
   end
 
   def destroy
-    comment = Comment.find params[:format]
-    comment.destroy
-    redirect_to post_path(params[:id])
+    @comment.destroy
+    redirect_to_post
   end
 
   def edit
     @post = Post.find params[:id]
-    @comment = Comment.find params[:format]
-    #@comment = Comment.new(post: @post)
   end
 
   def update
-    @comment = Comment.find(params[:format])
     @comment.update(content: params[:comment][:content])
-    redirect_to post_path params[:id]
+    redirect_to_post
   end
 
   private
-  def current_user_id
-    current_user[:id]
+  def find_comment
+    @comment ||= Comment.find params[:format]
+  end
+
+  def redirect_to_post
+    redirect_to post_path params[:id]
   end
 end
