@@ -6,8 +6,8 @@
       <th>Title</th>
       <th>Author</th>
       <th>Description</th>
-      <th>Action</th>
       <th>Date</th>
+      <th>Action</th>
     </tr>
   </thead>
 
@@ -15,7 +15,7 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= post.title %></td>
-        <td><%= post.author %></td>
+        <td><%= User.find(post.author_id)[:name] %></td>
         <td><%= post.description %></td>
         <td><%= Russian::strftime post.created_at %></td>
         <td>

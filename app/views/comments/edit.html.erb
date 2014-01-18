@@ -1,2 +1,10 @@
-<h1>Comments#edit</h1>
-<p>Find me in app/views/comments/edit.html.erb</p>
+<% if @post.author?(current_user) %>
+  <h1>Editing comment</h1>
+
+  <%= render 'posts/comment_form'%>
+
+  <%= link_to 'Show', @post, class: 'form-group' %> |
+  <%= link_to 'Back', posts_path, class: 'form-group' %>
+<% else %>
+  <p>You are not author of this post</p>
+<% end %>

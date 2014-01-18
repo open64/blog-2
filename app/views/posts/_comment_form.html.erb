@@ -1,0 +1,8 @@
+<% if sign_in? %>
+  <%=form_for([@post, @comment], url: comments_path(@post, @comment.id)) do |f| %>
+    <div>
+      <%= f.text_area :content %>
+      <%= f.submit 'Save' %>
+    </div>
+  <% end %>
+<% end %>

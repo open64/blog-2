@@ -12,7 +12,7 @@
 
 <p>
   <strong>Author:</strong>
-  <%= @post.author%>
+  <%= User.find(@post.author_id).name%>
 </p>
 
 <% if @post.author?(current_user) %>
@@ -20,11 +20,25 @@
 <% end %>
 <%= link_to 'Back', posts_path %>
 
-<%= form_for([@post, @comment]) do |f| %>
-  <%= f.text_area :content %>
-  <%= f.submit 'Save' %>
-<% end %>
+<%= render 'comment_form' %>
 
-<% @post.comments.each do |comment| %>
-  <%= comment.content %>
-<% end %>
+<div class="comment">
+  <% @post.comments.each do |comment| %>
+    <div class="date">
+      <%= comment.created_at %>
+    </div>
+    <div>
+      <%= User.find(comment.author_id).name %>
+    </div>
+    <div class="content">
+      <%= comment.content %>
+    </div>
+    <div class="action">
+      <% if @post.author?(current_user) %>
+        <%= link_to ' ', edit_comments_path(@post, comment), class: "glyphicon glyphicon-pencil", title: "edit"%>
+        <%= link_to ' ', comments_path(@post, comment), class: "remove glyphicon glyphicon-trash", title: 'delete',
+                    method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

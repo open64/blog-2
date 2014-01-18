@@ -1,8 +1,10 @@
 Blog2::Application.routes.draw do
-  resource :comments do
-  end
+  #resource :comments do
+  #end
   resources :posts do
+    member do
       resource :comments
+    end
   end
   resources :users do
   end
