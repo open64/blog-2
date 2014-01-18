@@ -29,7 +29,7 @@
             <% if sign_in? %>
               <li><%= link_to 'Sing out', signout_path, method: 'delete' %></li>
             <% else %>
-              <li><%= link_to 'Sing up', users_new_path %></li>
+              <li><%= link_to 'Sing up', new_user_path %></li>
               <li><%= link_to 'Sing in', new_session_path %></li>
             <% end %>
         </ul>

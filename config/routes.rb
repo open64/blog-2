@@ -1,6 +1,9 @@
 Blog2::Application.routes.draw do
-  get "users/new"
-  resources :posts
+  resource :comments do
+  end
+  resources :posts do
+      resource :comments
+  end
   resources :users do
   end
   resources :sessions, only: [:new, :destroy, :create]

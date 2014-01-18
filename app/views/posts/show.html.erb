@@ -19,3 +19,12 @@
     <%= link_to 'Edit', edit_post_path(@post) %> |
 <% end %>
 <%= link_to 'Back', posts_path %>
+
+<%= form_for([@post, @comment]) do |f| %>
+  <%= f.text_area :content %>
+  <%= f.submit 'Save' %>
+<% end %>
+
+<% @post.comments.each do |comment| %>
+  <%= comment.content %>
+<% end %>
