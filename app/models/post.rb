@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
   validate :title, :description, presence: true
   def author?(user)
     if user != nil
-      self[:author_id] == user[:id]
+      self[:author_id.to_i] == user[:id]
     else
       false
     end
