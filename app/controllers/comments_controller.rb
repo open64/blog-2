@@ -17,7 +17,6 @@ class CommentsController < ApplicationController
 
   def edit
     @post = Post.find params[:id]
-    Post.update_attribute
   end
 
   def update
