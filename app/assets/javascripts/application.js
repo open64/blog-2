@@ -13,9 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require js/bootstrap.js
-//= require js/bootstrap.min.js
-// require_tree .
+//= require bootstrap
+//= require_tree .
 
 ;(function($){
     var home = $('.navbar .container');
