@@ -10,8 +10,8 @@
  *
  * require_self
  * require_tree .
- *= require_tree ../../../vendor/assets/stylesheets/css
- *= require_tree ../../../vendor/assets/stylesheets/fonts
+ *= require bootstrap
+ *require
  */
 html body {
     margin-left: 22px;

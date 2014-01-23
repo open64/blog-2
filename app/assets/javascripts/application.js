@@ -13,7 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree ../../../vendor/assets/javascripts/js
+//= require js/bootstrap.js
+//= require js/bootstrap.min.js
 // require_tree .
 
 ;(function($){
