@@ -1,0 +1,20 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <%= link_to 'Home', root_path, class: 'navbar-brand', id: 'home111' %>
+    </div>
+    <div class="collapse navbar-collapse">
+      <% if sign_in? %>
+        <span id="welcome">Welcome <%=link_to current_user[:name], current_user %></span>
+      <% end %>`
+      <ul class="nav navbar-nav">
+        <% if sign_in? %>
+          <li><%= link_to 'Sing out', signout_path, method: 'delete' %></li>
+        <% else %>
+          <li><%= link_to 'Sing up', new_user_path %></li>
+          <li><%= link_to 'Sing in', new_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

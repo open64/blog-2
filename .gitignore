@@ -16,4 +16,4 @@
 /tmp
 /.idea
 /test
-
+/db/development.sqlite3
