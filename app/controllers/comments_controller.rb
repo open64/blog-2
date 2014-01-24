@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(content: params[:comment][:content], post_id: params[:id],
-                           author_id: Post.find(params[:id])[:author_id])
+                           author_id: current_user[:id])
     @comment.save
     redirect_to_post
   end

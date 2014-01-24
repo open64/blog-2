@@ -2,25 +2,14 @@
 <html>
 <head>
   <title>Blog2</title>
-  <%#= stylesheet_link_tag    "/css/bootstrap-theme.css", media: "all", "data-turbolinks-track" => true %>
-  <%#= stylesheet_link_tag    "/css/bootstrap-theme.min", media: "all", "data-turbolinks-track" => true %>
-  <%#= stylesheet_link_tag    "/css/bootstrap.css", media: "all", "data-turbolinks-track" => true %>
-  <%#= stylesheet_link_tag    "/css/bootstrap.min", media: "all", "data-turbolinks-track" => true %>
-
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-
-
   <%= csrf_meta_tags %>
 </head>
 <body>
   <%= render 'layouts/header' %>
-  <div class="container col-md-6" id="content">
+  <div class="container col-md-10" id="content">
       <%= yield %>
   </div>
-
-  <%#= javascript_include_tag "/js/bootstrap.js", "data-turbolinks-track" => true %>
-  <%#= javascript_include_tag "/js/bootstrap.min", "data-turbolinks-track" => true %>
-
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 </body>
 </html>
