@@ -34,7 +34,7 @@
       <%= comment.content %>
     </div>
     <div class="action">
-      <% if @post.author?(current_user) %>
+      <% if comment.author?(current_user) %>
         <%= link_to ' ', edit_comments_path(@post, comment), class: "glyphicon glyphicon-pencil", title: "edit"%>
         <%= link_to ' ', comments_path(@post, comment), class: "remove glyphicon glyphicon-trash", title: 'delete',
                     method: :delete, data: { confirm: 'Are you sure?' } %>
