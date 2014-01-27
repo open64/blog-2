@@ -4,19 +4,28 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(content: params[:comment][:content], post_id: params[:id],
+    @comment = Comment.new(content: params[:comment][:content], post_id: params[:post_id],
                            author_id: current_user[:id])
-    @comment.save
-    redirect_to_post
+    @post = Post.find params[:post_id]
+    respond_to do |format|
+      if @comment.save
+        format.html { render partial: 'posts/comment_show', object: @comment, as: 'comment' }
+      else
+      end
+    end
+
   end
 
   def destroy
     @comment.destroy
-    redirect_to_post
+    respond_to do |format|
+      format.html { redirect_to_post }
+      format.json { head :no_content }
+    end
   end
 
   def edit
-    @post = Post.find params[:id]
+    @post = Post.find params[:post_id]
   end
 
   def update
@@ -26,7 +35,7 @@ class CommentsController < ApplicationController
 
   private
   def find_comment
-    @comment ||= Comment.find params[:format]
+    @comment ||= Comment.find params[:id]
   end
 
   def redirect_to_post

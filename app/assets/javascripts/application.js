@@ -26,7 +26,7 @@
                url: target.href+".json",
                type: "GET",
                success: function(res) {
-                   history.pushState('', 'New Page Title', '/newHREF');
+//                   history.pushState('', 'New Page Title', '/newHREF');
                    console.log(res);
                }
             }

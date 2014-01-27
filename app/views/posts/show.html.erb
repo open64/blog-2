@@ -22,23 +22,11 @@
 
 <%= render 'comment_form' %>
 
-<div class="comment">
-  <% @post.comments.each do |comment| %>
-    <div class="date">
-      <%= comment.created_at %>
-    </div>
-    <div>
-      <%= User.find(comment.author_id).name %>
-    </div>
-    <div class="content">
-      <%= comment.content %>
-    </div>
-    <div class="action">
-      <% if comment.author?(current_user) %>
-        <%= link_to ' ', edit_comments_path(@post, comment), class: "glyphicon glyphicon-pencil", title: "edit"%>
-        <%= link_to ' ', comments_path(@post, comment), class: "remove glyphicon glyphicon-trash", title: 'delete',
-                    method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
-    </div>
+<div class="123">
+
+</div>
+<div class="comments">
+  <% @comments.each do |comment| %>
+    <%= render partial: 'comment_show', object: comment, as: 'comment' %>
   <% end %>
 </div>
