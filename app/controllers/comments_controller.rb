@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { render partial: 'posts/comment_show', object: @comment, as: 'comment' }
       else
+        format.html { render partial: 'posts/comment_error' }
       end
     end
 

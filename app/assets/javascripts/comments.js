@@ -1,6 +1,6 @@
 ;(function($){
-    var comment_form = $('form');
-    var comment = $('.comments');
+    var comment_form = $('.new_comment');
+    var comments = $('.comments');
     comment_form.submit(function(event){
     $.ajax({
         url: this.action,
@@ -8,7 +8,8 @@
         dataType: "html",
         data: $(this).serialize(),
         success: function(response){
-            comment.append(response);
+            comments.children('.comment_errors').remove();
+            comments.append(response);
             comment_form.find('textarea').val('');
         },
         error: function(response) {
@@ -19,7 +20,7 @@
         return false;
     });
 
-    comment.delegate('.comment .remove', 'click', function(event){
+    comments.delegate('.comment .remove', 'click', function(event){
         var self_comment = this;
         $.ajax({
             url: this.href,

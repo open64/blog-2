@@ -1,8 +1,10 @@
-<% if sign_in? %>
-  <%=form_for([@post, @comment]) do |f| %>
-    <div>
-      <%= f.text_area :content %>
-      <%= f.submit 'Save' %>
-    </div>
+<div class="">
+  <% if sign_in? %>
+    <%=form_for([@post, @comment]) do |f| %>
+      <div>
+        <%= f.text_area :content %>
+        <%= f.submit 'Save' %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
