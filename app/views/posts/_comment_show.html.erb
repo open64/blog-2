@@ -10,7 +10,8 @@
   </div>
   <div class="action">
     <% if comment.author?(current_user) %>
-      <%= link_to ' ', edit_post_comment_path(@post, comment), class: "glyphicon glyphicon-pencil", title: "edit"%>
+      <%= link_to ' ', edit_post_comment_path(@post, comment), class: "glyphicon glyphicon-pencil", id: 'edit_comment',
+                  title: "edit"%>
       <%= link_to ' ', post_comment_path(@post, comment), class: "remove glyphicon glyphicon-trash", title: 'delete',
                   method: :delete %>
     <% end %>

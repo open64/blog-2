@@ -30,7 +30,6 @@
                    console.log(res);
                }
             }
-
         );
         console.log(e.target)
     });

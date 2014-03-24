@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :find_comment, only: [:edit, :destroy, :update]
+  before_action :find_comment, only: [:edit, :destroy, :update]
   def new
   end
 
@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @post = Post.find params[:post_id]
     respond_to do |format|
       if @comment.save
-        format.html { render partial: 'posts/comment_show', object: @comment, as: 'comment' }
+        render_show_comment(format)
       else
         format.html { render partial: 'posts/comment_error' }
       end
@@ -27,11 +27,22 @@ class CommentsController < ApplicationController
 
   def edit
     @post = Post.find params[:post_id]
+    respond_to do |format|
+      if @comment.author?(current_user)
+        format.html { render partial: 'posts/comment_form' }
+      else
+        format.html { render text: 'You are not author of this post' }
+      end
+    end
+
   end
 
   def update
-    @comment.update(content: params[:comment][:content])
-    redirect_to_post
+    @comment.update(params.require(:comment).permit(:content))
+    @post = Post.find params[:post_id]
+    respond_to do |format|
+      render_show_comment format
+    end
   end
 
   private
@@ -39,7 +50,11 @@ class CommentsController < ApplicationController
     @comment ||= Comment.find params[:id]
   end
 
+  def render_show_comment(format)
+    format.html { render partial: 'posts/comment_show', object: @comment, as: 'comment' }
+  end
+
   def redirect_to_post
-    redirect_to post_path params[:id]
+    redirect_to post_path params[:post_id]
   end
 end
